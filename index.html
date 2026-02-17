@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>FeedMePls</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <h1>🍔 FeedMePls</h1>
+    <p>Find nearby food carts & order on WhatsApp</p>
+
+    <!-- Area Filter -->
+    <label>
+        <input type="checkbox" id="free-filter" />
+        Free delivery ₹121+
+    </label>
+
+    <select id="area-filter">
+        <option value="all">All Areas</option>
+        <option value="Behind GIT College, Sitapura, Jaipur">
+            GIT College Area
+        </option>
+    </select>
+
+    <!-- Cards will be injected here -->
+    <div id="cart-list"></div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
