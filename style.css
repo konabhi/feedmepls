@@ -140,35 +140,66 @@ p {
 
 .filter-icon {
     position: absolute;
-    left: 12px;
+    left: 14px;
     top: 50%;
     transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     color: #ffd166;
     pointer-events: none;
     z-index: 2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 1px 3px rgba(255, 209, 102, 0.3));
+}
+
+.filter-container:hover .filter-icon,
+select:focus+.filter-icon {
+    color: #ffffff;
+    transform: translateY(-50%) scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 2px 6px rgba(255, 209, 102, 0.5));
 }
 
 /* Ensure dropdown options are visible - using multiple approaches for cross-browser support */
 select {
     width: 100%;
-    padding: 10px 40px 10px 36px;
-    border-radius: 25px;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    background: rgba(26, 29, 58, 0.8);
-    /* Fallback solid background */
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    padding: 12px 45px 12px 40px;
+    border-radius: 28px;
+    border: 2px solid transparent;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08)),
+        linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(255, 209, 102, 0.1));
+    background-clip: padding-box, border-box;
+    backdrop-filter: blur(15px);
     color: #ffffff;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.3px;
     appearance: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 4px 16px rgba(37, 211, 102, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+select::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+select:hover::before {
+    left: 100%;
 }
 
 /* Force dark theme for select dropdown */
@@ -188,38 +219,54 @@ select option {
 
 select:focus {
     outline: none;
-    border-color: rgba(255, 209, 102, 0.5);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 20px rgba(255, 209, 102, 0.2);
-    transform: translateY(-1px);
+    border-color: rgba(255, 209, 102, 0.6);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.12)),
+        linear-gradient(135deg, rgba(37, 211, 102, 0.15), rgba(255, 209, 102, 0.15));
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        0 6px 20px rgba(37, 211, 102, 0.2),
+        0 0 20px rgba(255, 209, 102, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px) scale(1.02);
+    color: #ffffff;
 }
 
 select:hover {
-    border-color: rgba(255, 209, 102, 0.4);
-    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 209, 102, 0.5);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.1)),
+        linear-gradient(135deg, rgba(37, 211, 102, 0.12), rgba(255, 209, 102, 0.12));
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.25),
+        0 5px 18px rgba(37, 211, 102, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
 }
 
 /* Custom dropdown arrow */
 select::after {
     content: '';
     position: absolute;
-    right: 14px;
+    right: 16px;
     top: 50%;
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid #ffffff;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ffffff;
     pointer-events: none;
-    transition: border-color 0.3s ease;
-    z-index: 2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 select:focus::after,
 select:hover::after {
     border-top-color: #ffd166;
-    opacity: 0.8;
+    transform: translateY(-50%) scale(1.1);
+    filter: drop-shadow(0 2px 4px rgba(255, 209, 102, 0.4));
 }
 
 @media (min-width: 480px) {
@@ -229,19 +276,19 @@ select:hover::after {
     }
 
     select {
-        padding: 12px 44px 12px 40px;
+        padding: 14px 50px 14px 44px;
         font-size: 15px;
     }
 
     .filter-icon {
-        left: 14px;
-        width: 18px;
-        height: 18px;
+        left: 16px;
+        width: 20px;
+        height: 20px;
     }
 
     select::after {
-        right: 16px;
-        border-width: 5px;
+        right: 18px;
+        border-width: 6px;
     }
 }
 
