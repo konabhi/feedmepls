@@ -20,7 +20,7 @@
 /* ===== Body ===== */
 body {
     min-height: 100vh;
-    padding: 20px;
+    padding: 16px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Ubuntu, sans-serif;
     color: var(--text-main);
@@ -31,42 +31,86 @@ body {
         linear-gradient(180deg, var(--bg-secondary), var(--bg-main));
 }
 
-/* Desktop center */
+/* Mobile first responsive design */
+@media (min-width: 480px) {
+    body {
+        padding: 20px;
+    }
+}
+
+/* Tablet and desktop center */
 @media (min-width: 768px) {
     body {
-        max-width: 430px;
+        max-width: 480px;
         margin: auto;
+        padding: 24px;
+    }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+    body {
+        max-width: 600px;
     }
 }
 
 /* ===== Header ===== */
 h1 {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 800;
     text-align: center;
     letter-spacing: 1.3px;
     margin-bottom: 8px;
     background: linear-gradient(90deg, #ffffff, #ffd166);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
 }
 
 p {
     text-align: center;
     font-size: 14px;
     color: var(--text-muted);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 480px) {
+    p {
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
 }
 
 /* ===== Filter ===== */
 select {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     border-radius: var(--radius);
     border: 1px solid var(--card-border);
     background: var(--card-bg);
     color: var(--text-main);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+@media (min-width: 480px) {
+    select {
+        padding: 14px;
+        margin-bottom: 24px;
+        font-size: 16px;
+    }
 }
 
 /* ===== Card ===== */
@@ -76,15 +120,34 @@ select {
             rgba(255, 255, 255, 0.05));
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
-    padding: 18px;
-    margin-bottom: 18px;
+    padding: 16px;
+    margin-bottom: 16px;
     box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
+}
+
+@media (min-width: 480px) {
+    .card {
+        padding: 18px;
+        margin-bottom: 18px;
+    }
+}
+
+@media (min-width: 768px) {
+    .card {
+        padding: 20px;
+    }
 }
 
 /* ===== Card Content ===== */
 .card h2 {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 6px;
+}
+
+@media (min-width: 480px) {
+    .card h2 {
+        font-size: 20px;
+    }
 }
 
 .location {
@@ -96,13 +159,20 @@ select {
     margin-bottom: 10px;
 }
 
+@media (min-width: 480px) {
+    .location {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+}
+
 /* ===== Free Delivery Badge ===== */
 .free-delivery {
     display: inline-flex;
     align-items: center;
     gap: 6px;
 
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.5px;
 
@@ -113,7 +183,15 @@ select {
     background: linear-gradient(135deg, #a7f3d0, #4ade80);
 
     box-shadow: 0 6px 16px rgba(74, 222, 128, 0.35);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+}
+
+@media (min-width: 480px) {
+    .free-delivery {
+        font-size: 11px;
+        padding: 8px 14px;
+        margin-bottom: 14px;
+    }
 }
 
 .free-delivery::before {
@@ -124,13 +202,23 @@ select {
 /* ===== Menu ===== */
 .menu-btn {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 14px;
-    border-radius: 14px;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.25);
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
     cursor: pointer;
+    font-size: 14px;
+}
+
+@media (min-width: 480px) {
+    .menu-btn {
+        padding: 12px;
+        margin-bottom: 14px;
+        border-radius: 14px;
+        font-size: 16px;
+    }
 }
 
 .menu-img {
@@ -145,25 +233,67 @@ select {
 /* ===== WhatsApp Button ===== */
 .btn {
     width: 100%;
-    padding: 15px;
-    border-radius: 16px;
+    padding: 12px;
+    border-radius: 14px;
     background: linear-gradient(135deg, #25d366, #1ebe5d);
     color: #000;
     font-weight: 800;
     text-align: center;
     text-decoration: none;
     display: block;
+    font-size: 14px;
+}
+
+@media (min-width: 480px) {
+    .btn {
+        padding: 15px;
+        border-radius: 16px;
+        font-size: 16px;
+    }
 }
 
 /* ===== Map ===== */
 #map {
-    height: 360px;
-    border-radius: 16px;
+    height: 240px;
+    border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     border: 1px solid var(--card-border);
 }
 
+@media (min-width: 360px) {
+    #map {
+        height: 280px;
+        border-radius: 14px;
+    }
+}
+
+@media (min-width: 480px) {
+    #map {
+        height: 320px;
+        border-radius: 16px;
+        margin-bottom: 18px;
+    }
+}
+
+@media (min-width: 768px) {
+    #map {
+        height: 360px;
+    }
+}
+
 .leaflet-container {
-    border-radius: 16px;
+    border-radius: 12px;
+}
+
+@media (min-width: 360px) {
+    .leaflet-container {
+        border-radius: 14px;
+    }
+}
+
+@media (min-width: 480px) {
+    .leaflet-container {
+        border-radius: 16px;
+    }
 }
