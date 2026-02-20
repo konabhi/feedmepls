@@ -6,29 +6,32 @@
     <title>FeedMePls</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 
 <body>
 
-    <h1>FEEDMEPLS</h1>
+    <header>
+        <i data-lucide="utensils-crossed" class="header-icon"></i>
+        <h1>FEEDMEPLS</h1>
+        <i data-lucide="utensils-crossed" class="header-icon"></i>
+    </header>
     <p>Find nearby food carts & order on WhatsApp</p>
 
     <!-- Area Filter -->
-    <select id="area-filter">
-        <option value="all">All Areas</option>
-        <option value="Behind GIT College, Sitapura, Jaipur">
-            GIT College Area
-        </option>
-    </select>
-
-    <!-- Map showing two locations -->
-    <div id="map"></div>
+    <div class="filter-container">
+        <i data-lucide="filter" class="filter-icon"></i>
+        <select id="area-filter">
+            <option value="all">All Areas</option>
+            <option value="Behind GIT College, Sitapura, Jaipur">
+                GIT College Area
+            </option>
+        </select>
+    </div>
 
     <!-- Cards -->
     <div id="cart-list"></div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
 

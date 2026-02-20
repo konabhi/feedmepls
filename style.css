@@ -24,11 +24,25 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Ubuntu, sans-serif;
     color: var(--text-main);
+    line-height: 1.5;
 
     background:
-        radial-gradient(circle at top left, #3a0ca3 0%, transparent 40%),
-        radial-gradient(circle at bottom right, #4361ee 0%, transparent 40%),
-        linear-gradient(180deg, var(--bg-secondary), var(--bg-main));
+        radial-gradient(circle at top left, #3a0ca3 0%, transparent 50%),
+        radial-gradient(circle at bottom right, #4361ee 0%, transparent 50%),
+        linear-gradient(180deg, #1a1d3a, #0e0f2a);
+}
+
+/* Add subtle content container styling */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.02);
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* Mobile first responsive design */
@@ -55,27 +69,49 @@ body {
 }
 
 /* ===== Header ===== */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.header-icon {
+    width: 32px;
+    height: 32px;
+    color: #ffd166;
+}
+
 h1 {
     font-size: 24px;
     font-weight: 800;
     text-align: center;
     letter-spacing: 1.3px;
-    margin-bottom: 8px;
-    background: linear-gradient(90deg, #ffffff, #ffd166);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin: 0;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 480px) {
     h1 {
         font-size: 28px;
     }
+
+    .header-icon {
+        width: 36px;
+        height: 36px;
+    }
 }
 
 @media (min-width: 768px) {
     h1 {
         font-size: 32px;
+    }
+
+    .header-icon {
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -94,35 +130,138 @@ p {
 }
 
 /* ===== Filter ===== */
+.filter-container {
+    position: relative;
+    margin-bottom: 16px;
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filter-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: #ffd166;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Ensure dropdown options are visible - using multiple approaches for cross-browser support */
 select {
     width: 100%;
-    padding: 12px;
-    border-radius: var(--radius);
-    border: 1px solid var(--card-border);
-    background: var(--card-bg);
-    color: var(--text-main);
-    margin-bottom: 20px;
+    padding: 10px 40px 10px 36px;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(26, 29, 58, 0.8);
+    /* Fallback solid background */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
     font-size: 14px;
+    font-weight: 500;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Force dark theme for select dropdown */
+select {
+    color-scheme: dark;
+}
+
+/* Alternative approach for option styling */
+select option {
+    background: #0e0f2a !important;
+    color: #ffffff !important;
+    padding: 12px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    border: none !important;
+}
+
+select:focus {
+    outline: none;
+    border-color: rgba(255, 209, 102, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(255, 209, 102, 0.2);
+    transform: translateY(-1px);
+}
+
+select:hover {
+    border-color: rgba(255, 209, 102, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Custom dropdown arrow */
+select::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #ffffff;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+    z-index: 2;
+}
+
+select:focus::after,
+select:hover::after {
+    border-top-color: #ffd166;
+    opacity: 0.8;
 }
 
 @media (min-width: 480px) {
+    .filter-container {
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+
     select {
-        padding: 14px;
-        margin-bottom: 24px;
-        font-size: 16px;
+        padding: 12px 44px 12px 40px;
+        font-size: 15px;
+    }
+
+    .filter-icon {
+        left: 14px;
+        width: 18px;
+        height: 18px;
+    }
+
+    select::after {
+        right: 16px;
+        border-width: 5px;
+    }
+}
+
+@media (min-width: 768px) {
+    .filter-container {
+        max-width: 320px;
     }
 }
 
 /* ===== Card ===== */
 .card {
     background: linear-gradient(145deg,
-            rgba(255, 255, 255, 0.14),
-            rgba(255, 255, 255, 0.05));
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.06));
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     padding: 16px;
     margin-bottom: 16px;
-    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 @media (min-width: 480px) {
@@ -142,6 +281,8 @@ select {
 .card h2 {
     font-size: 18px;
     margin-bottom: 6px;
+    color: #ffffff;
+    font-weight: 700;
 }
 
 @media (min-width: 480px) {
@@ -151,7 +292,9 @@ select {
 }
 
 .location {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 12px;
     background: rgba(255, 255, 255, 0.1);
     padding: 6px 12px;
@@ -159,10 +302,21 @@ select {
     margin-bottom: 10px;
 }
 
+.location-icon {
+    width: 14px;
+    height: 14px;
+    color: #ffd166;
+}
+
 @media (min-width: 480px) {
     .location {
         font-size: 14px;
         padding: 8px 14px;
+    }
+
+    .location-icon {
+        width: 16px;
+        height: 16px;
     }
 }
 
@@ -186,11 +340,21 @@ select {
     margin-bottom: 12px;
 }
 
+.delivery-icon {
+    width: 12px;
+    height: 12px;
+}
+
 @media (min-width: 480px) {
     .free-delivery {
         font-size: 11px;
         padding: 8px 14px;
         margin-bottom: 14px;
+    }
+
+    .delivery-icon {
+        width: 14px;
+        height: 14px;
     }
 }
 
@@ -210,6 +374,15 @@ select {
     color: #fff;
     cursor: pointer;
     font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.menu-icon {
+    width: 16px;
+    height: 16px;
 }
 
 @media (min-width: 480px) {
@@ -218,6 +391,11 @@ select {
         margin-bottom: 14px;
         border-radius: 14px;
         font-size: 16px;
+    }
+
+    .menu-icon {
+        width: 18px;
+        height: 18px;
     }
 }
 
@@ -233,67 +411,141 @@ select {
 /* ===== WhatsApp Button ===== */
 .btn {
     width: 100%;
-    padding: 12px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #25d366, #1ebe5d);
-    color: #000;
-    font-weight: 800;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #25d366 0%, #1da851 50%, #128c7e 100%);
+    color: #ffffff;
+    font-weight: 700;
     text-align: center;
     text-decoration: none;
-    display: block;
-    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    border: 2px solid rgba(37, 211, 102, 0.3);
+    box-shadow:
+        0 4px 15px rgba(37, 211, 102, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: whatsappPulse 2s infinite;
+}
+
+@keyframes whatsappPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 4px 15px rgba(37, 211, 102, 0.3),
+            0 2px 8px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    50% {
+        box-shadow:
+            0 4px 20px rgba(37, 211, 102, 0.5),
+            0 2px 12px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 25px rgba(37, 211, 102, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(37, 211, 102, 0.5);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgba(37, 211, 102, 0.5),
+        0 4px 15px rgba(37, 211, 102, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow:
+        0 2px 8px rgba(37, 211, 102, 0.3),
+        inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+}
+
+.whatsapp-icon {
+    width: 18px;
+    height: 18px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.btn-text {
+    flex: 1;
+    text-align: center;
+    font-weight: 700;
+}
+
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover .arrow-icon {
+    transform: translateX(3px);
 }
 
 @media (min-width: 480px) {
     .btn {
-        padding: 15px;
-        border-radius: 16px;
+        padding: 16px 20px;
+        border-radius: 18px;
         font-size: 16px;
+        gap: 12px;
     }
-}
 
-/* ===== Map ===== */
-#map {
-    height: 240px;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 16px;
-    border: 1px solid var(--card-border);
-}
-
-@media (min-width: 360px) {
-    #map {
-        height: 280px;
-        border-radius: 14px;
+    .whatsapp-badge {
+        width: 36px;
+        height: 36px;
     }
-}
 
-@media (min-width: 480px) {
-    #map {
-        height: 320px;
-        border-radius: 16px;
-        margin-bottom: 18px;
+    .whatsapp-icon {
+        width: 20px;
+        height: 20px;
     }
-}
 
-@media (min-width: 768px) {
-    #map {
-        height: 360px;
-    }
-}
-
-.leaflet-container {
-    border-radius: 12px;
-}
-
-@media (min-width: 360px) {
-    .leaflet-container {
-        border-radius: 14px;
-    }
-}
-
-@media (min-width: 480px) {
-    .leaflet-container {
-        border-radius: 16px;
+    .arrow-icon {
+        width: 18px;
+        height: 18px;
     }
 }

@@ -25,10 +25,14 @@ function renderCarts(list) {
 
         card.innerHTML = `
       <h2>${cart.name}</h2>
-      <p class="location">📍 ${cart.area}</p>
+      <p class="location">
+        <i data-lucide="map-pin" class="location-icon"></i>
+        ${cart.area}
+      </p>
 
       ${cart.freeDeliveryAbove
                 ? `<span class="free-delivery">
+               <i data-lucide="truck" class="delivery-icon"></i>
                FREE DELIVERY ON ₹${cart.freeDeliveryAbove}+
              </span>`
                 : ""
@@ -36,7 +40,10 @@ function renderCarts(list) {
 
       ${cart.menuImage
                 ? `
-            <button class="menu-btn">View Menu</button>
+            <button class="menu-btn">
+              <i data-lucide="eye" class="menu-icon"></i>
+              View Menu
+            </button>
             <div class="menu-img">
               <img src="${cart.menuImage}" alt="${cart.name} Menu">
             </div>
@@ -44,12 +51,16 @@ function renderCarts(list) {
                 : ""
             }
 
-      <a 
+      <a
         href="https://wa.me/${cart.whatsapp}?text=Hi%20I%20want%20to%20order"
         target="_blank"
         class="btn"
       >
-        Order on WhatsApp
+        <div class="whatsapp-badge">
+          <i data-lucide="message-circle" class="whatsapp-icon"></i>
+        </div>
+        <span class="btn-text">Order Now on WhatsApp</span>
+        <i data-lucide="arrow-right" class="arrow-icon"></i>
       </a>
     `;
 
@@ -87,55 +98,9 @@ areaFilter.addEventListener("change", () => {
     }
 });
 
-// ===== Map Integration (Leaflet) =====
-// Locations (includes highlighted location resolved from the Google Maps shortlink)
-const mapLocations = [
-    { name: "Cups Cafe", coords: [26.8365, 75.8150] },
-    { name: "Sattu Chai", coords: [26.8350, 75.8180] },
-    {
-        name: "The Cups Cafe (Google Maps)",
-        coords: [26.7895452, 75.8402143],
-        mapsUrl: "https://www.google.com/maps/place/The+Cups+Cafe/@26.78955,75.8376394,17z/data=!3m1!4b1!4m6!3m5!1s0x396dc9a7a632df05:0x9b147675a9fd078d!8m2!3d26.7895452!4d75.8402143",
-        highlighted: true
+// Initialize Lucide icons
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.lucide) {
+        lucide.createIcons();
     }
-];
-
-function initMap() {
-    if (!window.L) {
-        console.warn('Leaflet library not loaded. Map will not initialize.');
-        return;
-    }
-
-    const map = L.map('map', { zoomControl: true }).setView(mapLocations[0].coords, 15);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    const markers = [];
-
-    mapLocations.forEach(loc => {
-        if (loc.highlighted) {
-            const marker = L.marker(loc.coords).addTo(map).bindPopup(`<strong>${loc.name}</strong><br><a href="${loc.mapsUrl}" target="_blank">Open in Google Maps</a>`);
-            L.circle(loc.coords, { radius: 80, color: '#ff4d4f', fillColor: '#ffcccc', fillOpacity: 0.25 }).addTo(map);
-            markers.push(marker);
-            // Open highlighted popup by default
-            marker.openPopup();
-        } else {
-            const marker = L.marker(loc.coords).addTo(map).bindPopup(`<strong>${loc.name}</strong>`);
-            markers.push(marker);
-        }
-    });
-
-    if (markers.length) {
-        const group = L.featureGroup(markers);
-        map.fitBounds(group.getBounds().pad(0.25));
-    }
-}
-
-// Initialize map once DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMap);
-} else {
-    initMap();
-}
+});
