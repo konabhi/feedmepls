@@ -4,20 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <title>FeedMePls</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 
 <body>
 
-    <h1>🍔 FeedMePls</h1>
+    <h1>FEEDMEPLS</h1>
     <p>Find nearby food carts & order on WhatsApp</p>
 
     <!-- Area Filter -->
-    <label>
-        <input type="checkbox" id="free-filter" />
-        Free delivery ₹121+
-    </label>
-
     <select id="area-filter">
         <option value="all">All Areas</option>
         <option value="Behind GIT College, Sitapura, Jaipur">
@@ -25,10 +22,13 @@
         </option>
     </select>
 
-    <!-- Cards will be injected here -->
+    <!-- Map showing two locations -->
+    <div id="map"></div>
+
+    <!-- Cards -->
     <div id="cart-list"></div>
 
-    <!-- JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
 
