@@ -60,7 +60,7 @@ body {
 
 @media (min-width: 768px) {
     body {
-        max-width: 430px;
+        max-width: 1000px;
         margin: 0 auto;
     }
 }
