@@ -10,6 +10,13 @@ const carts = [
         name: "Sattu Chai",
         area: "Behind GIT College, Sitapura, Jaipur",
         whatsapp: "918888888888"
+    },
+    {
+        name: "China Wok",
+        area: "capital highstreet,jagatpura, Jaipur",
+        whatsapp: "919999999999",
+        freeDeliveryAbove: 199,
+        menuImage: "china-wok-menu.jpg"
     }
 ];
 
@@ -24,49 +31,39 @@ function renderCarts(list) {
         card.className = "card";
 
         card.innerHTML = `
-      <h2>${cart.name}</h2>
-      <p class="location">
-        <i data-lucide="map-pin" class="location-icon"></i>
-        ${cart.area}
-      </p>
+            <h2>${cart.name}</h2>
+            <p class="location">📍 ${cart.area}</p>
 
-      ${cart.freeDeliveryAbove
-                ? `<span class="free-delivery">
-               <i data-lucide="truck" class="delivery-icon"></i>
-               FREE DELIVERY ON ₹${cart.freeDeliveryAbove}+
-             </span>`
-                : ""
-            }
-
-      ${cart.menuImage
+            ${cart.freeDeliveryAbove
                 ? `
-            <button class="menu-btn">
-              <i data-lucide="eye" class="menu-icon"></i>
-              View Menu
-            </button>
-            <div class="menu-img">
-              <img src="${cart.menuImage}" alt="${cart.name} Menu">
-            </div>
-          `
+                    <span class="free-delivery">
+                        FREE DELIVERY ON ₹${cart.freeDeliveryAbove}+
+                    </span>
+                    `
                 : ""
             }
 
-      <a
-        href="https://wa.me/${cart.whatsapp}?text=Hi%20I%20want%20to%20order"
-        target="_blank"
-        class="btn"
-      >
-        <div class="whatsapp-badge">
-          <i data-lucide="message-circle" class="whatsapp-icon"></i>
-        </div>
-        <span class="btn-text">Order Now on WhatsApp</span>
-        <i data-lucide="arrow-right" class="arrow-icon"></i>
-      </a>
-    `;
+            ${cart.menuImage
+                ? `
+                    <button class="menu-btn">View Menu</button>
+                    <div class="menu-img">
+                        <img src="${cart.menuImage}" alt="${cart.name} Menu">
+                    </div>
+                    `
+                : ""
+            }
+
+            <a
+                href="https://wa.me/${cart.whatsapp}?text=Hi%20I%20want%20to%20order"
+                target="_blank"
+                class="btn"
+            >
+                Order on WhatsApp
+            </a>
+        `;
 
         cartList.appendChild(card);
 
-        // Menu toggle
         const menuBtn = card.querySelector(".menu-btn");
         const menuImg = card.querySelector(".menu-img");
 
@@ -75,17 +72,18 @@ function renderCarts(list) {
 
             menuBtn.addEventListener("click", () => {
                 const open = menuImg.style.display === "block";
+
                 menuImg.style.display = open ? "none" : "block";
-                menuBtn.textContent = open ? "View Menu" : "Hide Menu";
+                menuBtn.textContent = open
+                    ? "View Menu"
+                    : "Hide Menu";
             });
         }
     });
 }
 
-// Initial render
 renderCarts(carts);
 
-// Area filter
 areaFilter.addEventListener("change", () => {
     const selectedArea = areaFilter.value;
 
@@ -95,12 +93,5 @@ areaFilter.addEventListener("change", () => {
         renderCarts(
             carts.filter(cart => cart.area === selectedArea)
         );
-    }
-});
-
-// Initialize Lucide icons
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.lucide) {
-        lucide.createIcons();
     }
 });
