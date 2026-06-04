@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Your Cart - FeedMePls</title>
+
+    <link rel="stylesheet" href="registercart.css">
+</head>
+
+<body>
+
+    <div class="register-container">
+
+        <a href="../index.html" class="back-btn">
+            ← Back to FeedMePls
+        </a>
+
+        <div class="register-card">
+
+            <h1>Register Your Cart</h1>
+
+            <p class="subtitle">
+                Join FeedMePls and start receiving WhatsApp orders from nearby students and customers.
+            </p>
+
+            <form id="cart-registration-form">
+
+                <div class="form-group">
+                    <label for="cartName">Cart Name *</label>
+                    <input type="text" id="cartName" name="cartName" placeholder="Example: China Wok" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ownerName">Owner Name *</label>
+                    <input type="text" id="ownerName" name="ownerName" placeholder="Your Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp Number *</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="+91XXXXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="area">Area *</label>
+                    <input type="text" id="area" name="area" placeholder="Sitapura, Jaipur" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Food Category</label>
+                    <select id="category" name="category">
+                        <option value="">Select Category</option>
+                        <option>Fast Food</option>
+                        <option>Chinese</option>
+                        <option>South Indian</option>
+                        <option>Tea & Snacks</option>
+                        <option>Beverages</option>
+                        <option>Desserts</option>
+                        <option>Pizza</option>
+                        <option>Burgers</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery">Free Delivery Above (₹)</label>
+                    <input type="number" id="delivery" name="delivery" placeholder="125">
+                </div>
+
+                <div class="form-group">
+                    <label for="menuImage">Menu Image URL</label>
+                    <input type="url" id="menuImage" name="menuImage" placeholder="https://example.com/menu.jpg">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">About Your Cart</label>
+                    <textarea id="description" name="description" rows="5"
+                        placeholder="Tell customers about your food cart, specialties, timings, etc."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Register My Cart
+                </button>
+
+            </form>
+
+            <p class="form-note">
+                Your cart will be reviewed before appearing on FeedMePls.
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
