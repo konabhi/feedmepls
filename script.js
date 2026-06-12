@@ -11,6 +11,11 @@ const carts = [
         area: "Behind GIT College, Sitapura, Jaipur",
         whatsapp: "918888888888"
     },
+      {
+        name: "Sattu Chai",
+        area: "Behind GIT College, Sitapura, Jaipur",
+        whatsapp: "918888888888"
+    },
     {
         name: "China Wok",
         area: "capital highstreet,jagatpura, Jaipur",
@@ -28,7 +33,7 @@ function renderCarts(list) {
 
     list.forEach(cart => {
         const card = document.createElement("div");
-        card.className = "card-cart";
+        card.className = "card";
 
         card.innerHTML = `
             <h2>${cart.name}</h2>
@@ -56,7 +61,7 @@ function renderCarts(list) {
             <a
                 href="https://wa.me/${cart.whatsapp}?text=Hi%20I%20want%20to%20order"
                 target="_blank"
-                class="whatsapp_btn"
+                class="btn"
             >
                 Order on WhatsApp
             </a>
