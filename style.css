@@ -1,5 +1,95 @@
-body {
-    background: black !important;
-    color: lime !important;
-    font-size: 30px !important;
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    min-height: 100vh;
+    padding: 30px 20px;
+    font-family: system-ui, sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #111, #1a1a1a);
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #25d366;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    color: #bdbdbd;
+    margin-bottom: 20px;
+}
+
+.top-actions {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.register-btn,
+.whatsapp-btn,
+.menu-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: #25d366;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#area-filter {
+    display: block;
+    width: 300px;
+    margin: 0 auto 30px;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+#cart-list {
+    display: grid;
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.cart-card {
+    background: #222;
+    padding: 20px;
+    border-radius: 18px;
+}
+
+.cart-card h2 {
+    color: #25d366;
+    margin-bottom: 10px;
+}
+
+.location {
+    color: #ccc;
+    margin: 10px 0;
+}
+
+.free-delivery {
+    display: inline-block;
+    margin: 10px 0;
+    color: #25d366;
+    font-weight: bold;
+}
+
+.menu-img img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.whatsapp-btn {
+    margin-top: 15px;
+}
+```
