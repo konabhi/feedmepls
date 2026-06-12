@@ -28,7 +28,7 @@ function renderCarts(list) {
 
     list.forEach(cart => {
         const card = document.createElement("div");
-        card.className = "card";
+        card.className = "card-cart";
 
         card.innerHTML = `
             <h2>${cart.name}</h2>
@@ -56,7 +56,7 @@ function renderCarts(list) {
             <a
                 href="https://wa.me/${cart.whatsapp}?text=Hi%20I%20want%20to%20order"
                 target="_blank"
-                class="btn"
+                class="whatsapp_btn"
             >
                 Order on WhatsApp
             </a>
