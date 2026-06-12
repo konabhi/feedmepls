@@ -1,57 +1,46 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aesthetic Clean UI</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FeedMePls</title>
+
+    ```
+    <link rel="stylesheet" href="style.css" />
+    ```
+
 </head>
+
 <body>
 
-    <h1>Discover Areas</h1>
-    <p>Explore premium locations and services tailored to your aesthetic preferences.</p>
+    ```
+    <h1>FEEDMEPLS</h1>
+
+    <p>
+        Find nearby food carts & order on WhatsApp
+    </p>
 
     <div class="top-actions">
-        <a href="#" class="register-btn">Register Now</a>
+        <a href="./register/registeryourcart.html" class="register-btn">
+            Register Your Cart
+        </a>
     </div>
 
     <select id="area-filter">
-        <option value="">Filter by Region...</option>
-        <option value="north">North District</option>
-        <option value="south">South Peninsula</option>
+        <option value="all">All Areas</option>
+
+        <option value="Behind GIT College, Sitapura, Jaipur">
+            GIT College Area
+        </option>
     </select>
 
-    <main id="cart-list">
-        <article class="cart-card">
-            <h2>The Minimalist Hub</h2>
-            <p class="location">📍 Downtown Slate, Studio 4</p>
-            <span class="free-delivery">Free Delivery</span>
-            
-            <div class="menu-img">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Minimal Interior">
-            </div>
+    <div id="cart-list"></div>
 
-            <div class="card-actions">
-                <a href="#" class="menu-btn">View Menu</a>
-                <a href="#" class="whatsapp-btn">Contact Agent</a>
-            </div>
-        </article>
-
-        <article class="cart-card">
-            <h2>Monochrome Lounge</h2>
-            <p class="location">📍 Urban Zinc, Suite 101</p>
-            <span class="free-delivery">Free Delivery</span>
-            
-            <div class="menu-img">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80" alt="Grey Lounge">
-            </div>
-
-            <div class="card-actions">
-                <a href="#" class="menu-btn">View Menu</a>
-                <a href="#" class="whatsapp-btn">Contact Agent</a>
-            </div>
-        </article>
-    </main>
+    <script src="script.js"></script>
+    ```
 
 </body>
+
 </html>
