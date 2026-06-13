@@ -11,18 +11,7 @@ const carts = [
         area: "Behind GIT College, Sitapura, Jaipur",
         whatsapp: "918888888888"
     },
-      {
-        name: "Sattu Chai",
-        area: "Behind GIT College, Sitapura, Jaipur",
-        whatsapp: "918888888888"
-    },
-    {
-        name: "China Wok",
-        area: "capital highstreet,jagatpura, Jaipur",
-        whatsapp: "919999999999",
-        freeDeliveryAbove: 199,
-        menuImage: "china-wok-menu.jpg"
-    }
+
 ];
 
 const cartList = document.getElementById("cart-list");
